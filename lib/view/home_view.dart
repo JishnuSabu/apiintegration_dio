@@ -21,17 +21,20 @@ class HomeView extends StatelessWidget {
       backgroundColor: MyColors.bgColor,
       appBar: _buildAppBar(),
       floatingActionButton: Obx(() =>
-      homeController.isInternetConnect.value ? _buildFAB() : Container()),
+          homeController.isInternetConnect.value ? _buildFAB() : Container()),
       body: Obx(
-            () => SizedBox(
+        () => SizedBox(
           width: double.infinity,
           height: double.infinity,
-          child: homeController.isInternetConnect.value ? homeController.isLoading.value ? _buildLoading() : _buildMainBody() : _buildNoInternetConnection(context),
+          child: homeController.isInternetConnect.value
+              ? homeController.isLoading.value
+                  ? _buildLoading()
+                  : _buildMainBody()
+              : _buildNoInternetConnection(context),
         ),
       ),
     );
   }
-
 
   /// AppBar
   AppBar _buildAppBar() {
@@ -73,7 +76,7 @@ class HomeView extends StatelessWidget {
           MaterialButton(
             onPressed: () => _materialOnTapButton(context),
             shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             color: MyColors.prColor,
             child: const Text(
               "Try Again",
